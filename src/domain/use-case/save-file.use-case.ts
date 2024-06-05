@@ -1,4 +1,4 @@
-import fs from 'fs';
+import fs from "fs";
 
 export interface SaveFileUseCase {
 	execute: (options: Options) => boolean;
@@ -6,23 +6,23 @@ export interface SaveFileUseCase {
 
 export interface Options {
 	fileContent: string;
-	fileDestination: string;
-	fileName: string;
+	fileDestination?: string;
+	fileName?: string;
 }
 
 export class SaveFile implements SaveFileUseCase {
-	cosntructor /* 
-            DI - Dependency Injection
-        */() {}
+	cosntructor(
+		/** DI - Dependency Injection */
+	) { }
 
 	execute({
 		fileContent,
-		fileDestination: destination,
-		fileName,
+		fileDestination = "outputs",
+		fileName = "table",
 	}: Options): boolean {
 		try {
-			fs.mkdirSync(destination, { recursive: true });
-			fs.writeFileSync(`${destination}/${fileName}.txt`, fileContent);
+			fs.mkdirSync(fileDestination, { recursive: true });
+			fs.writeFileSync(`${fileDestination}/${fileName}.txt`, fileContent);
 			return true;
 		} catch (error) {
 			console.log(error);
