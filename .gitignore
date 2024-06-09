@@ -1,4 +1,8 @@
-/node_modules
-/outputs
+node_modules/
+outputs/
+dist/
+custom-outputs/
 .DS_Store
 
+coverage/
+test-destination/
